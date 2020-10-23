@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminBoardComponent } from './admin-board/admin-board.component';
 //import { authInterceptorProviders } from './_helpers/auth.interceptor';
 //add authenication
 
@@ -20,7 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminBoardComponent
   ],
   imports: [
     BrowserModule,

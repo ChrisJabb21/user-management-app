@@ -1,26 +1,33 @@
+const { authJwt } = require("../middleware");
+const controller = require("../controllers/user.controller");
 
-module.exports = app => {
-    const users = require("../controllers/user.controller.js");
-    var router = require("express").Router();
+///TODO Add Middleware
+module.exports = function(app) {
+    app.use(function(req,res, next) {
+        res.header(
+            "Access-Control-Allow-Headers",
+            "x-access-token, Origin, Content-Type, Accept"
+        );
+        next();
+    });
 
-    //ManageUsers CRUD Functionality for Admin User
-    //Routes for admin functionality and creating, updating and deleting users.
+    app.get("/api/test/all", controller.allAccess);
 
-    //Create a new user
-    router.post("/", users.create);
-
-    //Retrieve all Users
-    router.get("/", users.findAll);
-
-    //Retrieve a single user by id
-    router.get("/:id", users.findOne);
-
-    //update a user with id 
-    router.put("/:id", users.update);
-
-    //remove a user with id 
-    router.delete("/:id",users.delete);
-
-    app.use('/api/users', router);
-
-};
+    app.get(
+      "/api/test/user",
+      [authJwt.verifyToken],
+      controller.userBoard
+    );
+  
+    app.get(
+      "/api/test/mod",
+      [authJwt.verifyToken, authJwt.isModerator],
+      controller.moderatorBoard
+    );
+  
+    app.get(
+      "/api/test/admin",
+      [authJwt.verifyToken, authJwt.isAdmin],
+      controller.adminBoard
+    );
+  };

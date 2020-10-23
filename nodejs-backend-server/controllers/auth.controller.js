@@ -6,13 +6,15 @@ const Role = db.role;
 const Op = db.Sequelize.Op;
 
 var jwt = require("jsonwebtoken");
+var bcrypt = require("bcryptjs");
+
 
 exports.signup = (req, res) => {
   // Save User to Database
   User.create({
     username: req.body.username,
     email: req.body.email,
-    password: req.body.password
+    password: bcrypt.hashSync(req.body.password, 8)
   })
     .then(user => {
       if (req.body.roles) {
@@ -50,12 +52,14 @@ exports.signin = (req, res) => {
         return res.status(404).send({ message: "User Not found." });
       }
 
-      var passwordIsValid = (req.body.password ===
+      var passwordIsValid = bcrypt.compareSync(
+        req.body.password,
         user.password
       );
 
       if (!passwordIsValid) {
         return res.status(401).send({
+          accessToken: null,
           message: "Invalid Password!"
         });
       }
