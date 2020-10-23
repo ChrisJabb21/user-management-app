@@ -7,11 +7,11 @@
         class="profile-img-card"
       />
       <form
-        *ngIf="!isSuccessful"
-        name="form"
-        (ngSubmit)="f.form.valid && onSubmit()"
-        #f="ngForm"
-        novalidate
+       *ngIf="!isSuccessful"
+       name = "form"
+       (ngSubmit)="f.form.valid && onSubmit()"
+       #f="ngForm"
+       novalidate
       >
         <div class="form-group">
           <label for="username">Username</label>
@@ -25,6 +25,7 @@
             maxlength="20"
             #username="ngModel"
           />
+          <!--Form Validation messages-->
           <div class="alert-danger" *ngIf="f.submitted && username.invalid">
             <div *ngIf="username.errors.required">Username is required</div>
             <div *ngIf="username.errors.minlength">
@@ -85,4 +86,3 @@
       </div>
     </div>
   </div>
-  

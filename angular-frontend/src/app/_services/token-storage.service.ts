@@ -6,6 +6,9 @@ const USER_KEY = 'auth-user';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Service for handling token storage and retrieval operations.
+ */
 export class TokenStorageService {
 
   constructor() { }
