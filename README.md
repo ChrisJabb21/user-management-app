@@ -1,21 +1,16 @@
 # User Management app template
 ------------------------------
-title: User Management template for an ecommerce app
-category: REST API, Angular, NodeJS, Express
-layout: 2017/sheet
-tags: [Featured]
-keywords:
- - Angular (TypeScript)
- - Node 
- - Express
- - MySQL
- - Sequelize
 
 # Overview
 A fullstack app with user role based functionality and abiliity to do CRUD operations on users as an admin.
-Can be incorporated into other apps that need to manage user information.
+Can be incorporated into other apps that need to manage user information. User Management template for an ecommerce app.
 
-Technologies: Angular (TypeScript) for the Frontend, NodeJs(JavaScript) & Express for the backend using a REST API and MySQL for database. 
+Technologies: Angular 10 (TypeScript) for the Frontend, NodeJS & Express (JavaScript) for the backend as a REST API service and MySQL for database. 
+ - Angular 10
+ - Node 
+ - Express
+ - MySQL
+ - Sequelize ORM
 
 ## Running the project
 ---
