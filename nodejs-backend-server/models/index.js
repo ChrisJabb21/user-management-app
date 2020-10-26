@@ -24,8 +24,6 @@ db.sequelize = sequelize;
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
 
-//TODO set foreign key relationship in MySQL tables and check if i can do one to many
-
 db.role.belongsToMany(db.user, {
     through: "user_roles",
     foreignKey: "roleId",
@@ -37,7 +35,7 @@ db.role.belongsToMany(db.user, {
     otherKey: "roleId"
   });
   
-db.ROLES = ["Admin", "User"];
+db.ROLES = ["admin", "user"];
 
 
 

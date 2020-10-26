@@ -11,9 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminBoardComponent } from './admin-board/admin-board.component';
-//import { authInterceptorProviders } from './_helpers/auth.interceptor';
-//add authenication
-
+import { AuthInterceptorProviders } from './_helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +28,7 @@ import { AdminBoardComponent } from './admin-board/admin-board.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [/* authInterceptorProviders */],
+  providers: [AuthInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
-  errorMsg = '';
+  errorMessage = '';
   roles: string[] = [];
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.reloadPage();
       },
       err => {
-        this.errorMsg = err.error.message;
+        this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     )

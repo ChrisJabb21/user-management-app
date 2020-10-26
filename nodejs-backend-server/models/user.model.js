@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
         password: Sequelize.STRING,
         role: Sequelize.STRING,
     }, {
-        timestamps: false
+        timestamps: true
     });
     return User;
 

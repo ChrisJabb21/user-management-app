@@ -11,14 +11,14 @@ export class RegisterComponent implements OnInit {
   form: any = {};
   isSuccessful = false;
   isSignUpFailed = false;
-  errorMsg = '';
+  errorMessage = '';
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  OnSubmit(): void {
+  onSubmit(): void {
     this.authService.register(this.form).subscribe(
       data => {
         console.log(data);
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = false;
       },
       err => {
-        this.errorMsg = err.error.message;
+        this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
       }
     );
