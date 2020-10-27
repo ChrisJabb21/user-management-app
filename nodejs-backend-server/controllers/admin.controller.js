@@ -12,7 +12,7 @@ includes validation and response status exception handling.
 exports.create = (req, res) => {
 
     //Check if all required fields are not empty for creating a user.
-    if(!req.body.username || !req.body.password || !req.body.role){
+    if(!req.body.username ||!req.body.email || !req.body.password){
         res.status(400).send({
             message: "Content can not be empty"
         });
@@ -22,8 +22,9 @@ exports.create = (req, res) => {
     //create user object with request body parameters.
     const user = {
     username: req.body.username,
-    password: req.body.password,
-    role: req.body.role
+    email: req.body.email,
+    password: req.body.password
+    //,role: req.body.role
     };
 
     //Save to database and error handle promises.
@@ -53,16 +54,12 @@ exports.findOne = (req, res) => {
     });
 };
 
-//Find user by Username
-    //maybe by name or email
-exports.getUserByUsername = (req, res) => {
-};
 
 //Retrieve all users from the database.
 exports.findAll = (req, res) => {
 const username = req.query.username;
-
-    User.findAll(username)
+var condition = username ? { title: { [Op.like]: `%${username}%` } } : null;
+    User.findAll({ where: condition})
       .then(data => {
         res.send(data);
       })

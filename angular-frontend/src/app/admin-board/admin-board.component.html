@@ -1,8 +1,58 @@
-
+<!--TODO: try to put componenets-->
+<!--TODO: make a way to make a new password and confirm with previous password-->
 <!-- Admin board for displaying all users and acts as entry point for CRUD operations.-->
 <div class="container">
     <header class="jumbotron">
         <p>admin-board works!</p>
-        <p>{{ content }}</p>
+       <!-- <p> {{ content }}</p>  -->
     </header>
-</div>
+
+    <div class="list row">
+        <!--Search bar-->
+        <div class="col-md-8">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search by username" [(ngModel)]="username" />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="searchUsername()">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--List of Users-->
+        <div class="col-md-6">
+            <h4>Users List</h4>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let user of users; let i = index" [class.active]="i == currentIndex"
+                    (click)="setActiveUser(user, i)">
+                    {{ user.username }}
+                </li>
+            </ul>
+        </div>
+        <!--Current/selected user column-->
+        <div class="col-md-6">
+            <div *ngIf="currentUser">
+                <h4>User</h4>
+                <div>
+                    <label><strong>Username:</strong></label> {{ currentUser.username }}
+                </div>
+                <div>
+                    <label><strong>Email:</strong></label>
+                    {{ currentUser.email }}
+                </div>
+                <div>
+                    <label><strong>Role:</strong></label>
+                    {{ currentUser.role ? "admin" : "user" }}
+                </div>
+                <a class="badge badge-warning" routerLink="/users/{{ currentUser.id }}">
+                    Edit
+                </a>
+            </div>
+
+            <div *ngIf="!currentUser">
+                <br />
+                <p>Please select a user...</p>
+            </div>
+
+        </div>
+    </div>

@@ -8,10 +8,18 @@ import { UserService } from '../_services/user.service';
 })
 export class AdminBoardComponent implements OnInit {
 
+  users: any;
+  currentUser = null;
+  currentIndex = -1;
+  username = '';
+
+
+
   content: string;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.retrieveUsers();
     this.userService.getAdminBoard().subscribe(
       data => {
         this.content = data;
@@ -20,5 +28,41 @@ export class AdminBoardComponent implements OnInit {
         this.content = JSON.parse(err.error).message;
       }
     );
+  }
+
+  retrieveUsers(): void {
+    this.userService.getAll()
+    .subscribe(
+      data => {
+        this.users = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  refreshList(): void {
+    this.retrieveUsers();
+    this.currentUser = null;
+    this.currentIndex = -1;
+  }
+
+  //select a user from list.
+  setActiveUser(user, index): void {
+    this.currentUser = user;
+    this.currentIndex = index;
+  }
+
+  searchUsername(): void {
+    this.userService.findByUsername(this.username)
+    .subscribe(
+      data => {
+        this.users = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
   }
 }

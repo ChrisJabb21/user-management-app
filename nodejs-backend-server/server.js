@@ -13,7 +13,8 @@ app.use(cors(corsOptions));
 //Parse requests for content type/MIME : application/json  application/x-www-form-urlencoded
 app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({ extended: false }));
+//
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //Sequelize
@@ -32,7 +33,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Node server is up and running." });
 
 });
+
 require("./routes/auth.routes")(app);
+require("./routes/admin.routes")(app);
 require("./routes/user.routes")(app);
 
 

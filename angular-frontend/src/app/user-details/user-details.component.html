@@ -1,0 +1,39 @@
+<!-- <p>user-details works!</p> -->
+<!--Figure out a way to display password to change-->
+<div style="width: 400px; margin: auto;">
+    <div *ngIf="currentUser" class="edit-form">
+        <h4>User</h4>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="title" [(ngModel)]="currentUser.username" name="username" />
+            </div>
+            <div class="form-group">
+                <label for="description">Email</label>
+                <input type="text" class="form-control" id="email" [(ngModel)]="currentUser.email" name="email" />
+            </div>
+
+            <div class="form-group">
+                <label><strong>Role:</strong></label>
+                {{ currentUser.role ? "User" : "Admin" }}
+            </div>
+        </form>
+
+        <button class="badge badge-danger mr-2" (click)="deleteUser()">
+            Delete
+        </button>
+
+        <button type="submit" class="badge badge-success" (click)="updateUser()">
+            Update
+        </button>
+        <p>{{ message }}</p>
+    </div>
+
+    <a class="badge badge-warning" routerLink="/users/{{ currentUser.id }}">
+        Edit
+    </a>
+</div>
+<div *ngIf="!currentUser">
+    <br />
+    <p>This user cannot be accessed..</p>
+</div>
