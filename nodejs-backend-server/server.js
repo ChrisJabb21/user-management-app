@@ -2,6 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
 //Initialize
 const app = express();
 
@@ -9,17 +10,13 @@ var corsOptions = {
   origin: "http://localhost:8081"
 };
 app.use(cors(corsOptions));
-
 //Parse requests for content type/MIME : application/json  application/x-www-form-urlencoded
 app.use(bodyParser.json());
-
 //
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 //Sequelize
 const db = require("./models");
-//const Role = db.role;
 db.sequelize.sync();
 
 //code to force drop and resync //will not work unless FK constraints removed
