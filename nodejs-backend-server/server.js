@@ -12,7 +12,6 @@ var corsOptions = {
 app.use(cors(corsOptions));
 //Parse requests for content type/MIME : application/json  application/x-www-form-urlencoded
 app.use(bodyParser.json());
-//
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Sequelize
@@ -32,7 +31,7 @@ app.get("/", (req, res) => {
 });
 require("./routes/admin.routes")(app);
 require("./routes/auth.routes")(app);
-require("./routes/user.routes")(app);
+//require("./routes/user.routes")(app);
 
 
 //set port and listen for requests
