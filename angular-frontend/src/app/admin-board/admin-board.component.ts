@@ -17,14 +17,6 @@ export class AdminBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveUsers();
-    // this.userService.getAdminBoard().subscribe(
-    //   data => {
-    //     this.content = data;
-    //   },
-    //   err => {
-    //     this.content = JSON.parse(err.error).message;
-    //   }
-    // );
   }
 
   retrieveUsers(): void {
