@@ -5,12 +5,11 @@
 A fullstack app with user role based functionality and ability to do CRUD operations on users as an admin.
 Can be incorporated into other apps that need to manage user information. User Management template for an ecommerce app.
 
-Technologies: Angular 10 (TypeScript) for the Frontend, NodeJS & Express (JavaScript) for the backend as a REST API service and MySQL for database. 
+Technologies used: Angular 10 (TypeScript) for the Frontend, NodeJS & Express (JavaScript) for the backend as a REST API service and MySQL for database. A MEAN stack but MySQL instead of Mongodb.
  - Angular 10
- - Node 
- - Express
+ - Node JS
+ - Express JS
  - MySQL
- - Sequelize ORM
 
 ## Running the project
 ---

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 const API_URL_TEST = 'http://localhost:8080/v1/test/';
-const API_URL = 'http://localhost:8080/v1/users/';
+const API_URL = 'http://localhost:8080/v1/users';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +11,14 @@ const API_URL = 'http://localhost:8080/v1/users/';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
-  }
+  // getPublicContent(): Observable<any> {
+  //   return this.http.get(API_URL + 'all', { responseType: 'text' });
+  // }
 
 
-  getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL_TEST + 'admin', {  responseType:'text'});
-  }
+  // getAdminBoard(): Observable<any> {
+  //   return this.http.get(API_URL_TEST + 'admin', {  responseType:'text'});
+  // }
 
   getAll(): Observable<any> {
     return this.http.get(API_URL);
@@ -37,7 +37,7 @@ export class UserService {
   }
 
   delete(id): Observable<any> {
-    return this.http.delete(API_URL);
+    return this.http.delete(`${API_URL}/${id}`);
   }
 
   findByUsername(username): Observable<any> {

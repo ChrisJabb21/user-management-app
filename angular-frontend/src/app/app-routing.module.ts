@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'admin', component: AdminBoardComponent },
+  {path: 'users', component: AdminBoardComponent }, //change to users for api access. was /admin
   { path: 'users/:id', component: UserDetailsComponent },
   { path: 'add', component: AddUserComponent },
   {path: '', redirectTo: 'home', pathMatch: 'full'} 

@@ -1,8 +1,16 @@
-
 module.exports = app => {
     const users = require("../controllers/admin.controller.js");
-    var router = require("express").Router();
 
+    var router = require("express").Router();
+    // app.use(function(req,res,next) {
+    //     res.header(
+    //         "Access-Control-Allow-Headers",
+    //         "x-access-token, Origin, Content-Type, Accept"
+    //     );
+    //     next();
+
+    // });
+ 
     //ManageUsers CRUD Functionality for Admin User
     //Routes for admin functionality and creating, updating and deleting users.
 
@@ -23,4 +31,5 @@ module.exports = app => {
 
     app.use('/v1/users', router);
 
+    return users;
 };

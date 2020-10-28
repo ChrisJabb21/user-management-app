@@ -1,8 +1,12 @@
 const db = require("../models");
+//console.log(db);
 const User = db.users;
+console.log(User); //Console is showing an object of undefined is being return for users
 const Op = db.Sequelize.Op;
 
-/*Admin user specific controller
+/*
+Rename to AdminUserOperations.controller.js
+Admin user specific controller
 controller CRUD requests for Admin functionality and part of website where role is Admin
 includes validation and response status exception handling.
 */
@@ -12,7 +16,7 @@ includes validation and response status exception handling.
 exports.create = (req, res) => {
 
     //Check if all required fields are not empty for creating a user.
-    if(!req.body.username ||!req.body.email || !req.body.password){
+    if(!req.body.username && !req.body.email && !req.body.password){
         res.status(400).send({
             message: "Content can not be empty"
         });
@@ -24,7 +28,6 @@ exports.create = (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password
-    //,role: req.body.role
     };
 
     //Save to database and error handle promises.
@@ -58,15 +61,17 @@ exports.findOne = (req, res) => {
 //Retrieve all users from the database.
 exports.findAll = (req, res) => {
 const username = req.query.username;
-var condition = username ? { title: { [Op.like]: `%${username}%` } } : null;
-    User.findAll({ where: condition})
+var condition = username ? { username: { [Op.like]: `%${username}%` } } : null;
+    
+User.findAll({ /* where: condition */ })
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
-          message:
+            message:
             err.message || "Some error occurred while retrieving Users."
+        
         });
       });
 };
@@ -119,8 +124,4 @@ exports.delete = (req, res) => {
             message: "Could not delete User with id=" + id
         });
     });
-
   };
-        
-
-//delete user details

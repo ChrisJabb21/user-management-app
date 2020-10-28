@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Sequelize
 const db = require("./models");
-const Role = db.role;
+//const Role = db.role;
 db.sequelize.sync();
 
 //code to force drop and resync //will not work unless FK constraints removed
@@ -33,9 +33,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Node server is up and running." });
 
 });
-
-require("./routes/auth.routes")(app);
 require("./routes/admin.routes")(app);
+require("./routes/auth.routes")(app);
 require("./routes/user.routes")(app);
 
 
