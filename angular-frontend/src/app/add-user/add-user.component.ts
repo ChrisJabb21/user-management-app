@@ -46,7 +46,7 @@ submitted = false;
       username:'',
       email: '',
     password: '',
-    role: "user" 
+    role: '' 
     }
   }
 

@@ -6,18 +6,54 @@
             <strong>{{ currentUser.username }}'s</strong> Profile
         </h3>
     </header>
-    <!-- Name of user -->
-    <p>
-        <strong>Email:</strong>
-        {{ currentUser.email }}
+
+    <div style="width: 400px; margin: auto;">
+        <div class="edit-form">
+            <h4>Profile Detail</h4>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" [(ngModel)]="currentUser.username" name="username" />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" [(ngModel)]="currentUser.email" name="email" />
+                </div>
+    
+                <!-- <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" id="password" [(ngModel)]="currentUser.password" name="password" />
+                </div> -->
+    
+                <div class="form-group">
+                    <label><strong>Role:</strong></label>
+                    <input type="text" class="form-control" id="role" [(ngModel)]="currentUser.role" name="role" />
+                </div>
+            </form>
+    
+            <button class="badge badge-danger mr-2" (click)="deleteUser()">
+                Delete
+            </button>
+    
+            <button type="submit" class="badge badge-success" (click)="updateUser()">
+                Update
+            </button>
+            <p>{{ message }}</p>
+        </div>
+    
+        <a class="badge badge-warning" routerLink="/home">
+            Go back
+        </a>
+    </div>
+
+    <!-- <p>
+        <strong>email:</strong>
+        {{ currentuser.email }}
     </p>
-    <!--Password-->
-    <strong>Role</strong>
-    <ul>
-        <li *ngFor="let role of currentUser.roles">
-            {{ role }}
-        </li>
-    </ul>
+    <p>
+    <strong>role: </strong>
+       {{ currentuser.role }}
+    </p> -->
 </div>
 <ng-template #loggedOut>
     Please login.

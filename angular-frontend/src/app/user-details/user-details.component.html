@@ -1,21 +1,25 @@
-<!-- <p>user-details works!</p> -->
 <!--Figure out a way to display password to change-->
 <div style="width: 400px; margin: auto;">
     <div *ngIf="currentUser" class="edit-form">
-        <h4>User</h4>
+        <h4>User Detail</h4>
         <form>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="title" [(ngModel)]="currentUser.username" name="username" />
+                <input type="text" class="form-control" id="username" [(ngModel)]="currentUser.username" name="username" />
             </div>
             <div class="form-group">
-                <label for="description">Email</label>
+                <label for="email">Email</label>
                 <input type="text" class="form-control" id="email" [(ngModel)]="currentUser.email" name="email" />
             </div>
 
+            <!-- <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" [(ngModel)]="currentUser.password" name="password" />
+            </div> -->
+
             <div class="form-group">
                 <label><strong>Role:</strong></label>
-                {{ currentUser.role ? "User" : "Admin" }}
+                <input type="text" class="form-control" id="role" [(ngModel)]="currentUser.role" name="role" />
             </div>
         </form>
 
@@ -29,8 +33,8 @@
         <p>{{ message }}</p>
     </div>
 
-    <a class="badge badge-warning" routerLink="/users/{{ currentUser.id }}">
-        Edit
+    <a class="badge badge-warning" routerLink="/users">
+        Go back
     </a>
 </div>
 <div *ngIf="!currentUser">

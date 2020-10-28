@@ -3,6 +3,7 @@
 <!-- Admin board for displaying all users and acts as entry point for CRUD operations.-->
 <div class="container">
     <header class="jumbotron">
+        <h1>Admin Board</h1>
         <p>admin-board works!</p>
        <!-- <p> {{ content }}</p>  -->
     </header>
@@ -32,7 +33,7 @@
         <!--Current/selected user column-->
         <div class="col-md-6">
             <div *ngIf="currentUser">
-                <h4>User</h4>
+                <h4>User Details</h4>
                 <div>
                     <label><strong>Username:</strong></label> {{ currentUser.username }}
                 </div>
@@ -42,7 +43,7 @@
                 </div>
                 <div>
                     <label><strong>Role:</strong></label>
-                    {{ currentUser.role ? "admin" : "user" }}
+                    {{ currentUser.role }}
                 </div>
                 <a class="badge badge-warning" routerLink="/users/{{ currentUser.id }}">
                     Edit
