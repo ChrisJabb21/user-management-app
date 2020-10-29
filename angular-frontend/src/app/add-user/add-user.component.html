@@ -17,6 +17,7 @@
           required
           [(ngModel)]="user.username"
           name="username"
+          minlength="3"
         />
       </div>
   
@@ -32,6 +33,7 @@
         />
       </div>
 
+      
       <div class="form-group">
         <label for="password">Password</label>
         <input
@@ -40,6 +42,7 @@
           required
           [(ngModel)]="user.password"
           name="password"
+          minlength="6"
         />
       </div>
 

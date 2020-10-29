@@ -6,6 +6,7 @@ import { UserService } from '../_services/user.service';
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.css']
 })
+
 export class AddUserComponent implements OnInit {
 
 user = {
