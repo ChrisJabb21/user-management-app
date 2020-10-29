@@ -1,69 +1,58 @@
 <div class="container">
-    <header class="jumbotron">
-        <h1>Add User</h1>
-        <p>Enter user information for new user.</p>
-       <!-- <p> {{ content }}</p>  -->
-    </header>
+  <header class="jumbotron">
+    <h1>Add User</h1>
+    <p>Enter user information for new user.</p>
+  </header>
 </div>
 
 <div class="submit-form">
-    <div *ngIf="!submitted">
-      <div class="form-group">
-        <label for="username">Username(required)</label>
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          required
-          [(ngModel)]="user.username"
-          name="username"
-          minlength="3"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="email">Email(required)</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          required
-          [(ngModel)]="user.email"
-          name="email"
-        />
-      </div>
-
-      
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          class="form-control"
-          id="password"
-          required
-          [(ngModel)]="user.password"
-          name="password"
-          minlength="6"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Role</label>
-        <input
-          class="form-control"
-          id="role"
-          [(ngModel)]="user.role"
-          name="role"
-        />
-  <br>
-      <button (click)="saveUser()" class="btn btn-success">Submit</button>
-      <a class="btn btn-warning" routerLink="/home">
-        Go back
-    </a>
-  
-    <div *ngIf="submitted">
-      <h4>User created successfully!</h4>
-      <button class="btn btn-success" (click)="newUser()">Add</button>
+  <form *ngIf="!isSuccessful"
+  name = "form"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate>
+    <div class="form-group">
+      <label for="username">Username(required)</label>
+      <input type="text" class="form-control" 
+      id="username" 
+      required [(ngModel)]="form.username" 
+      name="username"
+      minlength="3" />
     </div>
 
-  </div>
-  
+    <div class="form-group">
+      <label for="email">Email(required)</label>
+      <input type="email" class="form-control" 
+      id="email" 
+      required [(ngModel)]="form.email"
+       name="email" />
+    </div>
+
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-control" id="password" 
+      required [(ngModel)]="form.password"
+       name="password" minlength="6" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Role</label>
+      <input class="form-control" id="role" [(ngModel)]="form.role" name="role" />
+    </div>
+      
+      <br>
+      <button class="btn btn-success">Submit</button>
+      <a class="btn btn-warning" routerLink="/home">
+        Go back
+      </a>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+       registration is successful!
+    </div>
+    </div>

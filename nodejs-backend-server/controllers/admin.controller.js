@@ -1,6 +1,8 @@
 const db = require("../models");
 //console.log(db);
-const User = db.users;
+const Users = db.users;
+//const User = db.user;
+
 console.log(User); //Console is showing an object of undefined is being return for users
 const Op = db.Sequelize.Op;
 
@@ -31,10 +33,27 @@ exports.create = (req, res) => {
     };
 
     //Save to database and error handle promises.
-    User.create(user)
-    .then(data => {
-            res.send(data);
-        })
+    Users.create(user)
+    .then(user => {
+        if (req.body.roles) {
+          Role.findAll({
+            where: {
+              name: {
+                [Op.or]: req.body.roles
+              }
+            }
+          }).then(roles => {
+            user.setRoles(roles).then(() => {
+              res.send({ message: "User was registered successfully!" });
+            });
+          });
+        } else {
+          // user role = 1
+          user.setRoles([1]).then(() => {
+            res.send({ message: "User was registered successfully!" });
+          });
+        }
+      })
     .catch(err => {
         res.status(500).send({
             message:
@@ -46,7 +65,7 @@ exports.create = (req, res) => {
 exports.findOne = (req, res) => {
  const id = req.params.id;
 
- User.findByPk(id)
+ Users.findByPk(id)
     .then(data => {
         res.send(data);
     })
@@ -63,7 +82,7 @@ exports.findAll = (req, res) => {
 const username = req.query.username;
 var condition = username ? { username: { [Op.like]: `%${username}%` } } : null;
     
-User.findAll({ where: condition })
+Users.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
@@ -105,7 +124,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id; 
 
-    User.destroy({
+    Users.destroy({
         where: { id: id }
     })
       .then(num => {

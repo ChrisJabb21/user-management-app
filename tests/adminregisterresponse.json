@@ -1,0 +1,7 @@
+{
+  "id": 1,
+  "username": "Admin",
+  "email": "admin@mail.com",
+  "roles": ["ROLE_USER", "ROLE_ADMIN"],
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAzNzMyNDc3LCJleHAiOjE2MDM4MTg4Nzd9.H7UcUuDAjGkvbycSDU40ldtGV9A3YMbWEG4NKumsSDU"
+}

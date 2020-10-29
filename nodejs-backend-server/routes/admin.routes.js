@@ -1,5 +1,7 @@
 module.exports = app => {
     const users = require("../controllers/admin.controller.js");
+    const { verifySignUp } = require("../middleware");
+
 
     var router = require("express").Router();
  
@@ -7,7 +9,10 @@ module.exports = app => {
     //Routes for admin functionality and creating, updating and deleting users.
 
     //Create a new user
-    router.post("/", users.create);
+    router.post("/",  [
+        verifySignUp.checkDuplicateUsernameOrEmail,
+        verifySignUp.checkRolesExisted
+    ], users.create);
 
     //Retrieve all Users
     router.get("/", users.findAll);

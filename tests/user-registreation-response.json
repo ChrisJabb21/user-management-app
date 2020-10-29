@@ -1,0 +1,7 @@
+{
+  "id": 2,
+  "username": "Chris",
+  "email": "chris@mail.com",
+  "roles": ["ROLE_USER"],
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjAzNDkwMTMzLCJleHAiOjE2MDM1NzY1MzN9.ZdjBiy6peKrV8hDDWbMb6CBrEG0_boaKlv-4hziqXqk"
+}

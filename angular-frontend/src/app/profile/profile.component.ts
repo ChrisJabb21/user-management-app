@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
               .subscribe(
                 response => {
                   console.log(response);
-                  this.router.navigate(['/users']);
+                  this.router.navigate(['/home']);
                 },
                 error => {
                   console.log(error);
