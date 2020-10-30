@@ -1,9 +1,6 @@
 const db = require("../models");
 //console.log(db);
 const Users = db.users;
-//const User = db.user;
-
-console.log(User); //Console is showing an object of undefined is being return for users
 const Op = db.Sequelize.Op;
 
 /*
